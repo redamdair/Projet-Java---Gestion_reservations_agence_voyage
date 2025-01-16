@@ -1,0 +1,18 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: projet_RM_VN_TD
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: motdepasse
+      MYSQL_DATABASE: projet_RM_VN_TD
+      MYSQL_USER: projet_RM_VN_TD
+      MYSQL_PASSWORD: motdepasse
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  
+
+volumes:
+  dbdata:

@@ -1,0 +1,67 @@
+--------------------- Tables et Attributs --------------------- 
+---------------------------------------------------------------
+
+1. Client
+   - ID_Client (PK)
+   - Nom
+   - Prenom
+   - Adresse
+   - Email
+   - Telephone
+
+2. Conseiller
+   - ID_Conseiller (PK)
+   - Nom
+   - Prenom
+   - Email
+   - Telephone
+
+3. Compagnie
+   - ID_Compagnie (PK)
+   - Nom
+   - Pays_Origine
+
+4. Vol
+   - ID_Vol (PK)
+   - ID_Compagnie (FK vers Compagnie)
+   - Lieu_Depart
+   - Lieu_Arrivee
+   - Date_Depart
+   - Heure_Depart
+   - Date_Arrivee
+   - Heure_Arrivee
+
+5. Reservation
+   - ID_Reservation (PK)
+   - ID_Client (FK vers Client)
+   - ID_Conseiller (FK vers Conseiller)
+   - ID_Vol (FK vers Vol)
+   - Date_Reservation
+   - Classe
+   - Type_Paiement
+   - Statut
+   - Nom_Reservateur
+   - Prenom_Reservateur
+   - Telephone_Reservateur
+   
+
+Relations et Clés Étrangères :
+-----------------------------
+1. Client - Conseiller
+   - Un client peut communiquer avec plusieurs conseillers.
+   - Un conseiller peut communiquer avec plusieurs clients.
+
+2. Conseiller - Reservation
+   - Un conseiller peut agir sur plusieurs réservations.
+   - Une réservation peut être modifiée par plusieurs conseillers.
+   - Clé étrangère dans la table Reservation : ID_Conseiller (référence à Conseiller).
+
+3. Vol - Reservation
+   - Un vol peut inclure plusieurs réservations. 
+   - Une réservation appartient à un unique vol.
+   - Clé étrangère dans la table Reservation : ID_Vol (référence à Vol).
+   
+4. Compagnie - Vol
+   - Une compagnie peut proposer plusieurs vols.
+   - Un vol appartient à une unique compagnie.
+   - Clé étrangère dans la table Vol : ID_Compagnie (référence à Compagnie).
